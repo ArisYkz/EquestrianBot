@@ -1,0 +1,4 @@
+[
+  { "id": "faq-001", "title": "Reset Password", "question": "How to reset password?", "answer": "Go to Settings > Security > Reset.", "url": "https://kb/reset" },
+  { "id": "faq-002", "title": "Refund", "question": "How to refund?", "answer": "Open Orders > Select > Refund.", "url": "https://kb/refund" }
+]

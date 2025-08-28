@@ -1,0 +1,218 @@
+@page "/dashboard"
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Forms
+@inject HttpClient Http
+
+<h2>📊 EquestrianBot Dashboard</h2>
+
+<p class="text-muted">Docs parsed: @ParsedDocs.Count | FileType: @FileType</p>
+@if (!string.IsNullOrEmpty(StatusMessage))
+{
+    <p class="text-info">@StatusMessage</p>
+}
+
+<hr />
+<h3>Upload Dataset</h3>
+
+<div class="mb-3">
+    <label>Select Tenant:</label>
+    <select @bind="TenantId" class="form-select">
+        @foreach (var t in Tenants)
+        {
+            <option value="@t">@t</option>
+        }
+    </select>
+</div>
+
+<div class="mb-3">
+    <InputFile OnChange="OnFileChange" />
+</div>
+
+<button class="btn btn-primary" @onclick="IngestDataset" disabled="@(ParsedDocs.Count == 0)">Upload & Ingest</button>
+<button class="btn btn-secondary ms-2" @onclick="LoadDocs">List Existing Docs</button>
+<button class="btn btn-danger ms-2" @onclick="DeleteTenant">Delete Tenant Dataset</button>
+
+@if (ParsedDocs.Any())
+{
+    <h4 class="mt-3">Preview</h4>
+    <ul>
+        @foreach (var d in ParsedDocs.Take(5))
+        {
+            <li>
+                @(d.ContainsKey("id") ? d["id"] : "[no id]") – 
+                @(d.ContainsKey("question") ? d["question"] : (d.ContainsKey("title") ? d["title"] : "[no text]"))
+            </li>
+        }
+    </ul>
+    @if (ParsedDocs.Count > 5)
+    {
+        <p class="text-muted">(+@((ParsedDocs.Count - 5)) more…)</p>
+    }
+}
+
+<hr />
+<h3>💬 Chat (@TenantId)</h3>
+
+<div class="border p-3 mb-3" style="height:300px; overflow-y:auto;">
+    @foreach (var m in Messages)
+    {
+        <div class="mb-2"><b>@m.Role:</b> @m.Content</div>
+    }
+</div>
+
+<div class="input-group">
+    <input class="form-control" @bind="UserInput" @bind:event="oninput" placeholder="Type your message..." />
+    <button class="btn btn-success" @onclick="SendMessage">Send</button>
+</div>
+
+@code {
+    private string TenantId { get; set; } = "tenantA";
+    private List<string> Tenants { get; set; } = new() { "tenantA", "tenantB" };
+
+    private string StatusMessage { get; set; } = "";
+    private string FileType { get; set; } = ".json";
+    private List<Dictionary<string, object>> ParsedDocs { get; set; } = new();
+    private List<ChatMessage> Messages { get; set; } = new();
+    private string UserInput { get; set; } = "";
+
+    // ✅ File upload + parsing
+    private async Task OnFileChange(InputFileChangeEventArgs e)
+    {
+        ParsedDocs.Clear();
+        var file = e.File;
+        FileType = Path.GetExtension(file.Name).ToLowerInvariant();
+
+        using var ms = new MemoryStream();
+        await file.OpenReadStream(maxAllowedSize: 5 * 1024 * 1024).CopyToAsync(ms);
+        var content = System.Text.Encoding.UTF8.GetString(ms.ToArray());
+
+        if (FileType == ".json")
+        {
+            try
+            {
+                // Try parse as list
+                ParsedDocs = Newtonsoft.Json.JsonConvert
+                    .DeserializeObject<List<Dictionary<string, object>>>(content) ?? new();
+
+                // Fallback: maybe single object
+                if (!ParsedDocs.Any())
+                {
+                    var one = Newtonsoft.Json.JsonConvert
+                        .DeserializeObject<Dictionary<string, object>>(content);
+                    if (one != null) ParsedDocs.Add(one);
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = $"❌ JSON parse error: {ex.Message}";
+            }
+        }
+        else if (FileType == ".csv")
+        {
+            var lines = content.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+            if (lines.Length > 1)
+            {
+                var headers = lines[0].Split(',');
+                foreach (var line in lines.Skip(1))
+                {
+                    var values = line.Split(',');
+                    var dict = new Dictionary<string, object>();
+                    for (int i = 0; i < headers.Length && i < values.Length; i++)
+                        dict[headers[i]] = values[i].Trim();
+                    ParsedDocs.Add(dict);
+                }
+            }
+        }
+
+        StatusMessage = $"✅ Loaded {ParsedDocs.Count} docs from {file.Name}";
+    }
+
+    // ✅ Send parsed docs to API
+    private async Task IngestDataset()
+    {
+        StatusMessage = "⏳ Uploading to API...";
+        try
+        {
+            var req = new { tenantId = TenantId, datasetType = "faq", documents = ParsedDocs };
+            var resp = await Http.PostAsJsonAsync("http://localhost:5140/api/ingest", req);
+            if (resp.IsSuccessStatusCode)
+            {
+                var result = await resp.Content.ReadFromJsonAsync<IngestResp>();
+                StatusMessage = $"✅ Ingested {result?.Count ?? 0} docs for {TenantId}.";
+            }
+            else
+            {
+                var body = await resp.Content.ReadAsStringAsync();
+                StatusMessage = $"❌ API error: {resp.StatusCode} | {body}";
+            }
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"❌ Exception: {ex.Message}";
+        }
+    }
+
+    // ✅ Load docs for tenant
+    private async Task LoadDocs()
+    {
+        try
+        {
+            var docs = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>(
+                $"http://localhost:5140/api/ingest/{TenantId}");
+            ParsedDocs = docs ?? new();
+            StatusMessage = $"Loaded {ParsedDocs.Count} docs for {TenantId}.";
+        }
+        catch (Exception ex)
+        {
+            ParsedDocs.Clear();
+            StatusMessage = $"❌ Load docs error: {ex.Message}";
+        }
+    }
+
+    // ✅ Delete tenant dataset
+    private async Task DeleteTenant()
+    {
+        var resp = await Http.DeleteAsync($"http://localhost:5140/api/ingest/{TenantId}");
+        if (resp.IsSuccessStatusCode)
+        {
+            ParsedDocs.Clear();
+            StatusMessage = $"Deleted dataset for {TenantId}.";
+        }
+        else
+        {
+            StatusMessage = $"❌ Delete error: {resp.StatusCode}";
+        }
+    }
+
+    // ✅ Chat
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(UserInput)) return;
+        Messages.Add(new ChatMessage { Role = "You", Content = UserInput });
+        try
+        {
+            var req = new { tenantId = TenantId, query = UserInput };
+            var resp = await Http.PostAsJsonAsync("http://localhost:5140/api/bot", req);
+            if (resp.IsSuccessStatusCode)
+            {
+                var bot = await resp.Content.ReadFromJsonAsync<BotResp>();
+                Messages.Add(new ChatMessage { Role = "Bot", Content = bot?.Answer ?? "I don’t know." });
+            }
+            else
+            {
+                var body = await resp.Content.ReadAsStringAsync();
+                Messages.Add(new ChatMessage { Role = "Bot", Content = $"Error: {resp.StatusCode} | {body}" });
+            }
+        }
+        catch (Exception ex)
+        {
+            Messages.Add(new ChatMessage { Role = "Bot", Content = $"Chat error: {ex.Message}" });
+        }
+        UserInput = "";
+    }
+
+    // ✅ Data models
+    public class ChatMessage { public string Role { get; set; } = ""; public string Content { get; set; } = ""; }
+    public class BotResp { public string Answer { get; set; } = ""; }
+    public class IngestResp { public string Status { get; set; } = ""; public int Count { get; set; } }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "p-001",
+    "title": "Riding Helmet",
+    "question": "What is a riding helmet?",
+    "answer": "Protective headgear for horse riders.",
+    "url": "https://shop/helmet"
+  },
+  {
+    "id": "p-002",
+    "title": "Riding Boots",
+    "question": "Tell me about riding boots",
+    "answer": "Durable leather boots for horse riding.",
+    "url": "https://shop/boots"
+  }
+]
