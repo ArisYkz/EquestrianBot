@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "FZmAlHScG0A=",
+  "success": true,
+  "projectFilePath": "D:\\Assignments\\IA\\EquestrianBot.Eval\\EquestrianBot.Eval.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\R9000P\\.nuget\\packages\\csvhelper\\33.1.0\\csvhelper.33.1.0.nupkg.sha512",
+    "C:\\Users\\R9000P\\.nuget\\packages\\system.net.http.json\\9.0.8\\system.net.http.json.9.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

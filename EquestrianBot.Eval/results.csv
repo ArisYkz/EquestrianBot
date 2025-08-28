@@ -1,0 +1,5 @@
+TenantId,Query,Answer,Strategy,LatencyMs,Sources
+tenantA,How do I reset my password?,ERROR: Response status code does not indicate success: 500 (Internal Server Error).,error,-1,
+tenantA,How do I refund?,ERROR: Response status code does not indicate success: 500 (Internal Server Error).,error,-1,
+tenantB,Tell me about riding helmets,ERROR: Response status code does not indicate success: 500 (Internal Server Error).,error,-1,
+tenantB,How to reset password?,ERROR: Response status code does not indicate success: 500 (Internal Server Error).,error,-1,

@@ -1,0 +1,69 @@
+ProductID,Name,Description,Price,StockQuantity,Category,ImageURL,CategoryID
+4,Coat,Coat,79.00,176,Clothing,/ProductImages/3cb218a5-345f-4c5d-85ee-c649ba8e9e00.jpg,2
+5,Coffee Mug,Ceramic mug with premium print,9.99,139,Home,/ProductImages/ddc6afc1-dabc-45a1-92e0-003177b5bd7c.jpg,4
+1002,Saddle1,handmade sandle from Kazakhstan,499.00,33,saddle,/ProductImages/saddle1.jpg,5
+1004,Whip,hand made from Kazakhstan,49.00,131,whip,/ProductImages/whip2.jpg,6
+1005,Whip2,handmade from Kazakhstan,49.00,0,whip,/ProductImages/whip3.jpg,6
+1006,Saddle,handmade from kazakhstan,289.00,3,saddle,/ProductImages/saddle2.jpg,5
+1010,boot,just boots,79.00,94,Clothing,/ProductImages/3ac1f169-cafe-4c02-a78d-89799c84a901.jpg,2
+1018,book,Classic literature collection,56.00,45,Books,/ProductImages/ce4729d6-25c0-4abd-ad29-8bfc70ea6ab5.jpg,7
+1019,boot,Premium leather hiking boots,199.00,67,Clothing,/ProductImages/04889e93-7a59-40f8-80b8-7797e0358203.jpg,2
+1020,saddle,Traditional Kazakh horse saddle with ornate design,456.00,12,saddle,/ProductImages/bd57d087-74e5-4102-b2e8-ec53e2cd7e45.jpg,5
+2001,Winter Jacket,Insulated winter jacket with waterproof exterior,129.99,85,Clothing,/ProductImages/winter-jacket-001.jpg,2
+2002,Sweater,Merino wool pullover sweater in multiple colors,89.99,120,Clothing,/ProductImages/sweater-wool-001.jpg,2
+2003,Jeans,Classic fit denim jeans with stretch comfort,69.99,200,Clothing,/ProductImages/jeans-classic-001.jpg,2
+2004,T-Shirt,Premium cotton t-shirt with modern fit,24.99,350,Clothing,/ProductImages/tshirt-cotton-001.jpg,2
+2005,Dress Shirt,Formal cotton dress shirt for professional wear,49.99,150,Clothing,/ProductImages/dress-shirt-001.jpg,2
+2006,Sneakers,Comfortable athletic sneakers for daily wear,79.99,180,Clothing,/ProductImages/sneakers-athletic-001.jpg,2
+2007,Dress Shoes,Genuine leather formal dress shoes,149.99,95,Clothing,/ProductImages/dress-shoes-001.jpg,2
+2008,Hat,Wool fedora hat with classic styling,39.99,75,Clothing,/ProductImages/hat-fedora-001.jpg,2
+3001,Tea Set,Porcelain tea set with 6 cups and saucers,79.99,45,Home,/ProductImages/tea-set-porcelain-001.jpg,4
+3002,Throw Pillow,Decorative throw pillow with geometric pattern,29.99,200,Home,/ProductImages/throw-pillow-001.jpg,4
+3003,Table Lamp,Modern LED table lamp with adjustable brightness,89.99,85,Home,/ProductImages/table-lamp-001.jpg,4
+3004,Wall Art,Framed abstract canvas print for modern homes,149.99,60,Home,/ProductImages/wall-art-abstract-001.jpg,4
+3005,Candles,Scented soy candles in glass containers - set of 3,34.99,120,Home,/ProductImages/candles-soy-001.jpg,4
+3006,Blanket,Soft fleece throw blanket for couch,49.99,95,Home,/ProductImages/blanket-fleece-001.jpg,4
+3007,Kitchen Scale,Digital kitchen scale with precision measurements,39.99,75,Home,/ProductImages/kitchen-scale-001.jpg,4
+3008,Plant Pot,Ceramic plant pot with drainage hole,19.99,150,Home,/ProductImages/plant-pot-ceramic-001.jpg,4
+3009,Mirror,Round decorative wall mirror with metal frame,69.99,40,Home,/ProductImages/mirror-round-001.jpg,4
+3010,Cutting Board,Bamboo cutting board with juice groove,24.99,110,Home,/ProductImages/cutting-board-bamboo-001.jpg,4
+4001,Fiction Novel,Bestselling contemporary fiction novel,14.99,200,Books,/ProductImages/fiction-novel-001.jpg,7
+4002,Cookbook,International cuisine cookbook with 300 recipes,29.99,85,Books,/ProductImages/cookbook-international-001.jpg,7
+4003,Biography,Inspiring biography of influential historical figure,19.99,120,Books,/ProductImages/biography-001.jpg,7
+4004,Self-Help Book,Personal development and productivity guide,24.99,160,Books,/ProductImages/self-help-001.jpg,7
+4005,Travel Guide,Complete travel guide for European destinations,34.99,90,Books,/ProductImages/travel-guide-europe-001.jpg,7
+4006,Art Book,Coffee table book featuring contemporary art,49.99,45,Books,/ProductImages/art-book-contemporary-001.jpg,7
+5001,Traditional Kazakh Bridle,Authentic handcrafted leather bridle with silver ornaments - traditional Kazakh design,299.99,18,saddle,/ProductImages/kazakh-bridle-001.jpg,5
+5002,Felt Horse Blanket,Traditional Kazakh felt horse blanket made from sheep wool with geometric patterns,229.99,22,saddle,/ProductImages/felt-horse-blanket-001.jpg,5
+5003,Kazakh Riding Hat,Traditional Kazakh horseman hat (telpek) made from felt and fur,89.99,35,Clothing,/ProductImages/kazakh-riding-hat-001.jpg,2
+5004,Horse Hair Brush Set,Natural horsehair grooming brushes handmade by Kazakh artisans,45.99,50,saddle,/ProductImages/horsehair-brush-001.jpg,5
+5005,Leather Reins Kazakh Style,Hand-braided leather reins with traditional Kazakh metalwork,149.99,28,saddle,/ProductImages/kazakh-reins-001.jpg,5
+5006,Stirrups Traditional,Hand-forged iron stirrups with leather straps - Kazakh nomad style,179.99,15,saddle,/ProductImages/kazakh-stirrups-001.jpg,5
+5007,Horse Collar Traditional,Decorative horse collar with bells and traditional Kazakh ornaments,189.99,12,saddle,/ProductImages/horse-collar-kazakh-001.jpg,5
+5008,Saddlebags Leather,Handcrafted leather saddlebags with traditional Kazakh tooling patterns,259.99,20,saddle,/ProductImages/saddlebags-kazakh-001.jpg,5
+5009,Horse Hobbles,Traditional leather horse hobbles used by Kazakh nomads,39.99,45,saddle,/ProductImages/horse-hobbles-001.jpg,5
+5010,Saddle Pad Felt,Thick felt saddle pad with colorful Kazakh geometric designs,89.99,30,saddle,/ProductImages/saddle-pad-felt-001.jpg,5
+5011,Horse Headstall,Ornate leather headstall with traditional Kazakh silverwork and tassels,219.99,16,saddle,/ProductImages/headstall-kazakh-001.jpg,5
+5012,Riding Boots Kazakh,Traditional high leather riding boots worn by Kazakh horsemen,199.99,25,Clothing,/ProductImages/kazakh-riding-boots-001.jpg,2
+5013,Horse Whip Ceremonial,Ceremonial horse whip with carved handle and horsehair tassel,129.99,8,whip,/ProductImages/ceremonial-whip-001.jpg,6
+5014,Leather Horse Halter,Hand-stitched leather halter with brass fittings - Kazakh craftsmanship,79.99,40,saddle,/ProductImages/leather-halter-kazakh-001.jpg,5
+5015,Traditional Horse Bell,Bronze horse bell with leather strap - used by Kazakh nomads for centuries,29.99,60,saddle,/ProductImages/horse-bell-bronze-001.jpg,5
+6001,Training Whip Traditional,Long horsehair training whip with carved wooden handle - Kazakh nomad style,89.99,32,whip,/ProductImages/training-whip-kazakh-001.jpg,6
+6002,Herding Whip,Short leather herding whip used by Kazakh shepherds and horsemen,65.99,28,whip,/ProductImages/herding-whip-001.jpg,6
+6003,Ceremonial Riding Crop,Ornate riding crop with silver inlays and horsehair tassel,119.99,15,whip,/ProductImages/ceremonial-crop-001.jpg,6
+6004,Leather Quirt,Traditional Kazakh quirt with braided leather handle,55.99,38,whip,/ProductImages/leather-quirt-001.jpg,6
+7001,Electronics Tablet,10-inch Android tablet with high-resolution display,249.99,55,Electronics,/ProductImages/tablet-android-001.jpg,8
+7002,Wireless Headphones,Bluetooth noise-cancelling headphones,129.99,95,Electronics,/ProductImages/headphones-wireless-001.jpg,8
+7003,Phone Case,Protective phone case with shock absorption,19.99,300,Electronics,/ProductImages/phone-case-001.jpg,8
+7004,Portable Charger,High-capacity portable battery pack,39.99,150,Electronics,/ProductImages/portable-charger-001.jpg,8
+7005,Smart Watch,Fitness tracking smartwatch with heart rate monitor,199.99,70,Electronics,/ProductImages/smart-watch-001.jpg,8
+8001,Yoga Mat,Non-slip yoga mat with alignment guides,29.99,120,Sports,/ProductImages/yoga-mat-001.jpg,9
+8002,Dumbbells,Adjustable dumbbells set 10-50 lbs,189.99,35,Sports,/ProductImages/dumbbells-adjustable-001.jpg,9
+8003,Running Shoes,Lightweight running shoes with cushioned sole,119.99,85,Sports,/ProductImages/running-shoes-001.jpg,9
+8004,Water Bottle,Insulated stainless steel water bottle,24.99,200,Sports,/ProductImages/water-bottle-steel-001.jpg,9
+8005,Resistance Bands,Set of 5 resistance bands with varying strengths,19.99,150,Sports,/ProductImages/resistance-bands-001.jpg,9
+9001,Backpack,Durable hiking backpack with multiple compartments,79.99,65,Travel,/ProductImages/backpack-hiking-001.jpg,10
+9002,Travel Pillow,Memory foam travel pillow with carrying case,24.99,100,Travel,/ProductImages/travel-pillow-001.jpg,10
+9003,Luggage Set,3-piece hardshell luggage set with TSA locks,299.99,25,Travel,/ProductImages/luggage-set-001.jpg,10
+9004,Travel Adapter,Universal travel adapter with USB ports,19.99,180,Travel,/ProductImages/travel-adapter-001.jpg,10
+9005,Packing Cubes,Set of 6 packing cubes for organized travel,29.99,90,Travel,/ProductImages/packing-cubes-001.jpg,10
